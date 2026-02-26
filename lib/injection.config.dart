@@ -12,12 +12,14 @@
 import 'package:get_it/get_it.dart' as _i174;
 import 'package:injectable/injectable.dart' as _i526;
 import 'package:sivcam/di/appModule.dart' as _i627;
-import 'package:sivcam/features/auth/login/data/datasource/remote/authService.dart'
-    as _i173;
-import 'package:sivcam/features/auth/login/domain/repositories/authRepository.dart'
-    as _i687;
-import 'package:sivcam/features/auth/login/domain/usecases/authUseCases.dart'
-    as _i598;
+import 'package:sivcam/features/auth/data/datasource/local/sharefPref.dart'
+    as _i96;
+import 'package:sivcam/features/auth/data/datasource/remote/authService.dart'
+    as _i889;
+import 'package:sivcam/features/auth/domain/repositories/authRepository.dart'
+    as _i912;
+import 'package:sivcam/features/auth/domain/usecases/authUseCases.dart'
+    as _i253;
 
 extension GetItInjectableX on _i174.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt
@@ -27,9 +29,10 @@ extension GetItInjectableX on _i174.GetIt {
   }) {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final appModule = _$AppModule();
-    gh.factory<_i173.AuthService>(() => appModule.authService);
-    gh.factory<_i687.AuthRepository>(() => appModule.authRepository);
-    gh.factory<_i598.AuthUseCases>(() => appModule.authUseCases);
+    gh.factory<_i96.SharefPref>(() => appModule.sharefPref);
+    gh.factory<_i889.AuthService>(() => appModule.authService);
+    gh.factory<_i912.AuthRepository>(() => appModule.authRepository);
+    gh.factory<_i253.AuthUseCases>(() => appModule.authUseCases);
     return this;
   }
 }

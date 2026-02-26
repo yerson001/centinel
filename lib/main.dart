@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sivcam/blocProvider.dart';
-import 'package:sivcam/features/auth/login/presentation/bloc/loginBloc.dart';
-import 'package:sivcam/features/auth/login/presentation/bloc/loginEvent.dart';
-import 'package:sivcam/features/auth/login/presentation/screens/loginScreen.dart';
+import 'package:sivcam/features/auth/presentation/login/bloc/loginBloc.dart';
+import 'package:sivcam/features/auth/presentation/login/bloc/loginEvent.dart';
+import 'package:sivcam/features/auth/presentation/login/screens/loginScreen.dart';
+import 'package:sivcam/features/auth/presentation/register/screens/registerScreen.dart';
+import 'package:sivcam/features/client/presentation/screens/clientHomeScreen.dart';
 import 'package:sivcam/features/onboard/screens/onboardScreen.dart';
+import 'package:sivcam/features/profile/presentation/update/profileUpdateScreen.dart';
 import 'package:sivcam/injection.dart';
 
 void main() async {
@@ -24,7 +27,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: blocProviders,
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'SIVCAM',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         ),
@@ -33,6 +36,9 @@ class MyApp extends StatelessWidget {
         routes: {
           'onboard': (context) => const OnboardScreen(),
           'login': (context) => const LoginScreen(),
+          'register': (context) => const RegisterScreen(),
+          'client/home': (context) => const ClientHomeScreen(),
+          'profile/update': (context) => const ProfileUpdateScreen(),
         },
       ),
     );
