@@ -23,4 +23,25 @@ class PhoneChange extends ProfileUpdateEvent {
   PhoneChange({required this.phone});
 }
 
+class NameChanged extends ProfileUpdateEvent {
+  final BlocFormItem name;
+  NameChanged({required this.name});
+}
+
+class LastNameChanged extends ProfileUpdateEvent {
+  final BlocFormItem lastname;
+  LastNameChanged({required this.lastname});
+}
+
+class PhoneChanged extends ProfileUpdateEvent {
+  final BlocFormItem phone;
+  PhoneChanged({required this.phone});
+}
+
+class PickImage extends ProfileUpdateEvent {}
+
+class TakePhoto extends ProfileUpdateEvent {}
+
+class FormSubmit extends ProfileUpdateEvent {}
+
 class FormSutmit extends ProfileUpdateEvent {}

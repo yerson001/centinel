@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sivcam/features/auth/data/models/user.dart';
+import 'package:sivcam/features/profile/presentation/update/bloc/profileUpdateBloc.dart';
+import 'package:sivcam/features/profile/presentation/update/bloc/profileUpdateEvent.dart';
+import 'package:sivcam/features/profile/presentation/update/bloc/profileUpdateState.dart';
+import 'package:sivcam/shared/utils/blocFormItem.dart';
+import 'package:sivcam/shared/widgets/default_Textfield_Outlined.dart';
+import 'package:sivcam/shared/widgets/defaultIconBack.dart';
 
 class ProfileUpdateContent extends StatelessWidget {
   final User? user;
@@ -43,32 +50,30 @@ class ProfileUpdateContent extends StatelessWidget {
                           SizedBox(height: 50),
                           _imageUser(context),
                           const SizedBox(height: 20),
-                          MinimalTextField(
-                            label: 'Nombre',
+                          DefaultTextfieldOutlined(
+                            hintText: 'Nombre',
                             icon: Icons.person,
-                            initialValue: user?.name,
                             onChanged: (text) =>
                                 context.read<ProfileUpdateBloc>().add(
                                   NameChanged(name: BlocFormItem(value: text)),
                                 ),
                             validator: (_) => state.name.error,
                           ),
-                          MinimalTextField(
-                            label: 'Apellido',
+                          DefaultTextfieldOutlined(
+                            hintText: 'Apellido',
                             icon: Icons.person_outline,
-                            initialValue: user?.lastname,
                             onChanged: (text) =>
                                 context.read<ProfileUpdateBloc>().add(
                                   LastNameChanged(
                                     lastname: BlocFormItem(value: text),
                                   ),
                                 ),
-                            validator: (_) => state.lastname.error,
+                            validator: (_) => state.lastName.error,
                           ),
-                          MinimalTextField(
-                            label: 'Teléfono',
+                          DefaultTextfieldOutlined(
+                            hintText: 'Teléfono',
                             icon: Icons.phone,
-                            initialValue: user?.phone,
+                            keyboardType: TextInputType.phone,
                             onChanged: (text) =>
                                 context.read<ProfileUpdateBloc>().add(
                                   PhoneChanged(
@@ -144,11 +149,29 @@ class ProfileUpdateContent extends StatelessWidget {
   Widget _imageUser(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        GalleryOrPhotoDialog(
-          context,
-          () => context.read<ProfileUpdateBloc>().add(PickImage()),
-          () => context.read<ProfileUpdateBloc>().add(TakePhoto()),
-        );
+        // TODO: Implementar diálogo para seleccionar galería o cámara
+        // showDialog(
+        //   context: context,
+        //   builder: (context) => AlertDialog(
+        //     title: const Text('Seleccionar foto'),
+        //     actions: [
+        //       TextButton(
+        //         onPressed: () {
+        //           context.read<ProfileUpdateBloc>().add(PickImage());
+        //           Navigator.pop(context);
+        //         },
+        //         child: const Text('Galería'),
+        //       ),
+        //       TextButton(
+        //         onPressed: () {
+        //           context.read<ProfileUpdateBloc>().add(TakePhoto());
+        //           Navigator.pop(context);
+        //         },
+        //         child: const Text('Cámara'),
+        //       ),
+        //     ],
+        //   ),
+        // );
       },
       child: Column(
         children: [
